@@ -10,13 +10,12 @@ export class AuthService {
     constructor(private readonly userService: UserService) { }
 
     async register(userRegisterDto: RegisterDto) {
-        
 
         const saltRounds = 10;
         const hash = await bcrypt.hash(userRegisterDto.password, saltRounds);
 
         const user = await this.userService.createUser({ ...userRegisterDto, password: hash });
-        return {user};
+        return { user };
 
 
     }
