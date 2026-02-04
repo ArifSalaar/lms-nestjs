@@ -44,5 +44,9 @@ export class UserService {
             throw err
         }
     }
+
+  async findByEmail(email: string): Promise<UserDocument | null> {
+    return this.userModel.findOne({ email }).exec();
+  }
 }
 
